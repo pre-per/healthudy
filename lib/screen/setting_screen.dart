@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:healthudy/const/colors.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-  
+class SettingScreen extends StatelessWidget {
+  const SettingScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: Text(
-            'Hello World',
+            'Setting Page',
             style: TextStyle(
-              color: TEXT_BLACK_COLOR,
-              fontWeight: FontWeight.w700,
               fontSize: 30.0,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
             ),
           ),
         ),
