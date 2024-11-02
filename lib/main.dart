@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:healthudy/const/colors.dart';
 import 'package:healthudy/provider/attendanceProvider.dart';
 import 'package:healthudy/provider/bottomNavigationProvider.dart';
+import 'package:healthudy/provider/scrollControllerProvider.dart';
 import 'package:healthudy/screen/homescreen.dart';
 import 'package:healthudy/screen/routine_screen.dart';
 import 'package:healthudy/screen/check_screen.dart';
@@ -13,6 +15,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => AttendanceProvider()),
         ChangeNotifierProvider(create: (_) => Bottomnavigationprovider()),
+        ChangeNotifierProvider(create: (_) => ScrollControllerProvider()),
       ],
       child: MyApp(),
     ),
@@ -25,6 +28,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        splashFactory: NoSplash.splashFactory,
+        scaffoldBackgroundColor: MAIN_GREY_COLOR,
+      ),
       debugShowCheckedModeBanner: false,
       home: MainScreen(),
     );
@@ -47,6 +54,7 @@ class MainScreen extends StatelessWidget {
       body: _screens[btprovider.selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
         backgroundColor: Colors.white,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
