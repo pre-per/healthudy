@@ -8,7 +8,7 @@ class MapWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 425.0,
-      height: 600.0,
+      height: 550.0,
       decoration: BoxDecoration(
         color: Colors.green[100],
       ),

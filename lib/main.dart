@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:healthudy/const/colors.dart';
 import 'package:healthudy/provider/attendanceProvider.dart';
 import 'package:healthudy/provider/bottomNavigationProvider.dart';
-import 'package:healthudy/provider/scrollControllerProvider.dart';
+import 'package:healthudy/provider/cardProvider.dart';
+import 'package:healthudy/provider/iconColorProvider.dart';
+import 'package:healthudy/provider/selectedDateProvider.dart';
 import 'package:healthudy/screen/homescreen.dart';
 import 'package:healthudy/screen/routine_screen.dart';
 import 'package:healthudy/screen/check_screen.dart';
@@ -15,7 +17,9 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => AttendanceProvider()),
         ChangeNotifierProvider(create: (_) => Bottomnavigationprovider()),
-        ChangeNotifierProvider(create: (_) => ScrollControllerProvider()),
+        ChangeNotifierProvider(create: (_) => SelectedDateProvider()),
+        ChangeNotifierProvider(create: (_) => CardProvider()),
+        ChangeNotifierProvider(create: (_) => IconColorProvider()),
       ],
       child: MyApp(),
     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthudy/component/cardList.dart';
 import 'package:healthudy/const/colors.dart';
 
 class RoutineScreen extends StatelessWidget {
@@ -27,15 +28,10 @@ class RoutineScreen extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Center(
-          child: Text(
-            'Routine Page',
-            style: TextStyle(
-              fontSize: 30.0,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ),
+        child: Column(
+          children: [
+            CardListWidget(),
+          ],
         ),
       ),
     );
