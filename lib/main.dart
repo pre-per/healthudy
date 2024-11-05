@@ -10,8 +10,15 @@ import 'package:healthudy/screen/routine_screen.dart';
 import 'package:healthudy/screen/check_screen.dart';
 import 'package:healthudy/screen/setting_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_naver_map/flutter_naver_map.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await NaverMapSdk.instance.initialize(
+    clientId: 'vqv6u6isdz',
+  );
+
   runApp(
     MultiProvider(
       providers: [

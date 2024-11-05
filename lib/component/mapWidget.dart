@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthudy/const/colors.dart';
+import 'package:flutter_naver_map/flutter_naver_map.dart';
 
 class MapWidget extends StatelessWidget {
   const MapWidget({super.key});
@@ -12,12 +12,11 @@ class MapWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.green[100],
       ),
-      child: const Center(
-        child: Text(
-          'Map Widget',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 30.0,
+      child: NaverMap(
+        options: NaverMapViewOptions(
+          initialCameraPosition: NCameraPosition(
+            target: NLatLng(37.5665, 126.9780), // 서울의 위도와 경도
+            zoom: 15,
           ),
         ),
       ),

@@ -28,7 +28,7 @@ class RoutineCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(6.0),
             ),
             child: Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,11 +45,29 @@ class RoutineCard extends StatelessWidget {
                           color: iconColorProvider.iconColor,
                         ),
                       ),
+                      const Center(
+                        child: Text(
+                          '완료!',
+                          style: TextStyle(
+                            color: PRIMARY_COLOR,
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
-                  SizedBox(width: 10.0),
-                  Column(
-                    children: [],
+                  const SizedBox(width: 10.0),
+                  const Expanded(
+                    child: Center(
+                      child: Text(
+                        "Hello World!",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),

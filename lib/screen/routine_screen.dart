@@ -30,7 +30,7 @@ class RoutineScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            CardListWidget(),
+            CardListWidget(scrollable: true),
           ],
         ),
       ),

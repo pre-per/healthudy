@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:healthudy/component/cardList.dart';
 import 'package:healthudy/component/main_calendar.dart';
 import 'package:healthudy/component/routineCard.dart';
+import 'package:healthudy/const/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,15 +25,11 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: const SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              CalendarWidget(),
-              CardListWidget(),
-            ],
-          ),
-        ),
+      body: Column(
+        children: [
+          CalendarWidget(),
+          CardListWidget(scrollable: true),
+        ],
       ),
     );
   }

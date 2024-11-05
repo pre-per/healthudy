@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthudy/const/colors.dart';
 
 class IconColorProvider with ChangeNotifier {
   Color _iconColor = Colors.grey;
@@ -6,7 +7,7 @@ class IconColorProvider with ChangeNotifier {
   Color get iconColor => _iconColor;
 
   void changeColor() {
-    _iconColor = Colors.yellow;
+    _iconColor = PRIMARY_COLOR;
     notifyListeners();
   }
 }
