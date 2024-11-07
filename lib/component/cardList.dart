@@ -13,7 +13,7 @@ class CardListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return Expanded(
       child: ListView.builder(
         physics: scrollable
             ? const AlwaysScrollableScrollPhysics()

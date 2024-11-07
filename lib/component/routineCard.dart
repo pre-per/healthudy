@@ -45,15 +45,17 @@ class RoutineCard extends StatelessWidget {
                           color: iconColorProvider.iconColor,
                         ),
                       ),
-                      const Center(
-                        child: Text(
-                          '완료!',
-                          style: TextStyle(
-                            color: PRIMARY_COLOR,
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
+                      Center(
+                        child: iconColorProvider.isChecked
+                            ? Text(
+                                '완료!',
+                                style: TextStyle(
+                                color: PRIMARY_COLOR,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w700,
+                              )
+                              )
+                            : const SizedBox()
                       ),
                     ],
                   ),

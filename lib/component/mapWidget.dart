@@ -15,7 +15,7 @@ class MapWidget extends StatelessWidget {
       child: NaverMap(
         options: NaverMapViewOptions(
           initialCameraPosition: NCameraPosition(
-            target: NLatLng(37.5665, 126.9780), // 서울의 위도와 경도
+            target: NLatLng(37.5665, 126.9780),
             zoom: 15,
           ),
         ),
