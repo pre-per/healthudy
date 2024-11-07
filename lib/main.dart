@@ -5,6 +5,7 @@ import 'package:healthudy/provider/bottomNavigationProvider.dart';
 import 'package:healthudy/provider/cardProvider.dart';
 import 'package:healthudy/provider/iconColorProvider.dart';
 import 'package:healthudy/provider/selectedDateProvider.dart';
+import 'package:healthudy/provider/naverMapController.dart';
 import 'package:healthudy/screen/homescreen.dart';
 import 'package:healthudy/screen/routine_screen.dart';
 import 'package:healthudy/screen/check_screen.dart';
@@ -27,6 +28,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => SelectedDateProvider()),
         ChangeNotifierProvider(create: (_) => CardProvider()),
         ChangeNotifierProvider(create: (_) => IconColorProvider()),
+        ChangeNotifierProvider(create: (_) => Navermapcontroller()),
       ],
       child: MyApp(),
     ),
