@@ -12,9 +12,11 @@ import 'package:healthudy/screen/check_screen.dart';
 import 'package:healthudy/screen/setting_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting();
 
   await NaverMapSdk.instance.initialize(
     clientId: 'vqv6u6isdz',

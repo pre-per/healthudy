@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:healthudy/const/colors.dart';
 import 'package:healthudy/provider/naverMapController.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ Future<String> checkPermission() async {
 
   LocationPermission checkedPermission = await Geolocator.checkPermission();
 
-  if (checkPermission == LocationPermission.denied) {
+  if (checkedPermission == LocationPermission.denied) {
     checkedPermission = await Geolocator.requestPermission();
     if (checkedPermission == LocationPermission.denied) {
       return '위치 권한을 허용해주세요';
@@ -27,13 +28,22 @@ Future<String> checkPermission() async {
 }
 
 class MapWidget extends StatelessWidget {
-  static final NMarker EMmarker = NMarker(
+  final Set<NAddableOverlay> markers = {
+    NMarker(
+      id: 'GYM',
+      position: NLatLng(37.5855175, 127.0305901),
+      caption: NOverlayCaption(text: '에너메카 안암점'),
+    ),
+  };
+
+  final NCircleOverlay circleOverlay = NCircleOverlay(
     id: 'GYM',
-    position: NLatLng(37.5855175, 127.0305901),
-    caption: NOverlayCaption(text: '에너메카 안암점'),
+    center: NLatLng(37.5855175, 127.0305901),
+    radius: 100.0,
+    color: PRIMARY_COLOR.withOpacity(0.3),
   );
 
-  const MapWidget({super.key});
+  MapWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,11 +74,14 @@ class MapWidget extends StatelessWidget {
                   target: NLatLng(37.5855175, 127.0305901),
                   zoom: 15,
                 ),
+                locationButtonEnable: true,
               ),
               onMapReady: (controller) {
                 mapController.setController(controller);
-                mapController.controller.addOverlay(EMmarker);
+                mapController.controller.addOverlayAll(markers);
+                mapController.controller.addOverlay(circleOverlay);
               },
+
             );
           }
           return Center(

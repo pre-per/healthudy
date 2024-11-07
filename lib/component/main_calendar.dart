@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:healthudy/const/colors.dart';
+import 'package:healthudy/provider/attendanceProvider.dart';
 import 'package:healthudy/provider/selectedDateProvider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:provider/provider.dart';
 
 class CalendarWidget extends StatelessWidget {
   const CalendarWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final dateProvider = Provider.of<SelectedDateProvider>(context);
+    final attendanceProvider = Provider.of<AttendanceProvider>(context);
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -20,6 +22,7 @@ class CalendarWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 10.0),
         child: TableCalendar(
+          locale: 'ko_kr',
           focusedDay: DateTime.now(),
           firstDay: DateTime(2000, 1, 1),
           lastDay: DateTime(2100, 1, 1),
@@ -38,36 +41,62 @@ class CalendarWidget extends StatelessWidget {
             ),
           ),
           calendarStyle: CalendarStyle(
-              todayDecoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.0),
+            todayDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.0),
+              color: PRIMARY_COLOR,
+            ),
+            defaultDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.0),
+              color: LIGHT_GREY_COLOR,
+            ),
+            weekendDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.0),
+              color: LIGHT_GREY_COLOR,
+            ),
+            selectedDecoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.0),
+              color: LIGHT_GREY_COLOR,
+              border: Border.all(
                 color: PRIMARY_COLOR,
+                width: 2.0,
               ),
-              defaultDecoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.0),
-                color: LIGHT_GREY_COLOR,
-              ),
-              weekendDecoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.0),
-                color: LIGHT_GREY_COLOR,
-              ),
-              selectedDecoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.0),
-                color: LIGHT_GREY_COLOR,
-                border: Border.all(
-                  color: PRIMARY_COLOR,
-                  width: 2.0,
-                ),
-              ),
-              todayTextStyle: const TextStyle(
-                fontSize: 15.0,
-                fontWeight: FontWeight.w600,
-              ),
-              selectedTextStyle: TextStyle(
-                fontSize: 15.0,
-                fontWeight: FontWeight.w600,
-                color: PRIMARY_COLOR,
-              ),
+            ),
+            todayTextStyle: const TextStyle(
+              fontSize: 15.0,
+              fontWeight: FontWeight.w600,
+            ),
+            selectedTextStyle: TextStyle(
+              fontSize: 15.0,
+              fontWeight: FontWeight.w600,
+              color: PRIMARY_COLOR,
+            ),
           ),
+          calendarBuilders:
+              CalendarBuilders(defaultBuilder: (context, day, focusedDay) {
+            if (attendanceProvider.attendanceDates
+                .any((d) => attendanceProvider.isSameDay(d, day))) {
+              return Center(
+                child: Container(
+                  width: 50.0,
+                  height: 40.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4.0),
+                    color: PASTEL_GREEN_COLOR,
+                  ),
+                  child: Center(
+                    child: Text(
+                      '${day.day}',
+                      style: const TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }
+            return null;
+          }),
         ),
       ),
     );
