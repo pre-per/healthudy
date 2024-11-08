@@ -77,8 +77,8 @@ class CalendarWidget extends StatelessWidget {
                 .any((d) => attendanceProvider.isSameDay(d, day))) {
               return Center(
                 child: Container(
-                  width: 50.0,
-                  height: 40.0,
+                  width: MediaQuery.of(context).size.width * 0.115,
+                  height: MediaQuery.of(context).size.height * 0.0425,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4.0),
                     color: PASTEL_GREEN_COLOR,
