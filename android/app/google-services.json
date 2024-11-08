@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "486962914",
+    "project_id": "healthudy",
+    "storage_bucket": "healthudy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486962914:android:3e01f2a3c39a9b911750bb",
+        "android_client_info": {
+          "package_name": "com.example.healthudy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuHAZXJPzQiyOsmw1EiXHSbH6v8VYnYM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

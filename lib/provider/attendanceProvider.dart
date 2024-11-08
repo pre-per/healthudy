@@ -1,30 +1,52 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AttendanceProvider with ChangeNotifier {
-  final List<DateTime> _attendanceDates = [
-    DateTime.utc(2024, 11, 3),
-    DateTime.utc(2024, 11, 4),
-    DateTime.utc(2024, 11, 6),
-  ];
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  List<DateTime> get attendanceDates => _attendanceDates;
+  Map<String, bool> _attendanceData = {};
 
-  bool isTodayAttendance(DateTime date) {
-    return _attendanceDates.any((d) => isSameDay(d, date));
+  Map<String, bool> get attendanceData => _attendanceData;
+
+  String getTodayDate() {
+    DateTime today = DateTime.now();
+    return '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
   }
 
-  void attendenceCheck() {
-    DateTime today = DateTime.now();
-
-    if (!_attendanceDates.any((d) => isSameDay(d, today))) {
-      _attendanceDates.add(today);
+  Future<void> checkAttendance() async {
+    String todayDate = getTodayDate();
+    try {
+      await _firestore.collection(todayDate).doc('attendance').set({
+        'isPresent': true,
+      });
+      _attendanceData[todayDate] = true;
       notifyListeners();
+    } catch (e) {
+      print("Error: $e");
     }
   }
 
-  bool isSameDay(DateTime date1, DateTime date2) {
-    return date1.year == date2.year &&
-        date1.month == date2.month &&
-        date1.day == date2.day;
+  Future<void> fetchAllAttendance() async {
+    try {
+      QuerySnapshot allCollections =
+          await _firestore.collectionGroup('attendance').get();
+      Map<String, bool> tempData = {};
+
+      for (var doc in allCollections.docs) {
+        String date = doc.reference.parent.id;
+        tempData[date] = doc['isPresent'] ?? false;
+      }
+
+      _attendanceData = tempData;
+      notifyListeners();
+    } catch (e) {
+      print("Error: $e");
+    }
+  }
+
+  bool get isTodayAttendance {
+    String todayDate = getTodayDate();
+    fetchAllAttendance();
+    return _attendanceData[todayDate] ?? false;
   }
 }

@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:healthudy/const/colors.dart';
+import 'package:healthudy/firebase_options.dart';
 import 'package:healthudy/provider/attendanceProvider.dart';
 import 'package:healthudy/provider/bottomNavigationProvider.dart';
 import 'package:healthudy/provider/cardProvider.dart';
@@ -16,8 +18,10 @@ import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await initializeDateFormatting();
-
   await NaverMapSdk.instance.initialize(
     clientId: 'vqv6u6isdz',
   );

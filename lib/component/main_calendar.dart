@@ -71,10 +71,9 @@ class CalendarWidget extends StatelessWidget {
               color: PRIMARY_COLOR,
             ),
           ),
-          calendarBuilders:
+          /* calendarBuilders:
               CalendarBuilders(defaultBuilder: (context, day, focusedDay) {
-            if (attendanceProvider.attendanceDates
-                .any((d) => attendanceProvider.isSameDay(d, day))) {
+            if () {
               return Center(
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.115,
@@ -96,8 +95,8 @@ class CalendarWidget extends StatelessWidget {
               );
             }
             return null;
-          }),
-        ),
+          }), */
+        ), 
       ),
     );
   }

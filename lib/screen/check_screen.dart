@@ -42,7 +42,7 @@ class CheckScreen extends StatelessWidget {
               const SizedBox(height: 20.0),
               GestureDetector(
                 onTap: () async {
-                  if (attendanceProvider.isTodayAttendance(DateTime.now())) {
+                  if (attendanceProvider.isTodayAttendance) {
                     showDialog(
                       context: context,
                       builder: (_) {
@@ -148,7 +148,7 @@ class CheckScreen extends StatelessWidget {
                       },
                     );
                     if (result == true) {
-                      attendanceProvider.attendenceCheck();
+                      attendanceProvider.checkAttendance();
                       showDialog(
                         context: context,
                         builder: (_) {
