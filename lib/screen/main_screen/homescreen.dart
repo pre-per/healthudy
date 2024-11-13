@@ -3,7 +3,6 @@ import 'package:healthudy/component/cardList.dart';
 import 'package:healthudy/component/main_calendar.dart';
 import 'package:healthudy/const/colors.dart';
 import 'package:healthudy/provider/cardProvider.dart';
-import 'package:healthudy/component/addRoutineButton.dart';
 import 'package:healthudy/provider/selectedDateProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -44,10 +43,10 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '   ${selectedDate!.year}년${selectedDate!.month}월${selectedDate!.day}일',
+                    '   ${selectedDate!.year}년${selectedDate.month}월${selectedDate.day}일',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.0,
+                      fontSize: 13.0,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -55,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     'n개   ',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.0,
+                      fontSize: 13.0,
                       fontWeight: FontWeight.w500,
                     ),
                   ),

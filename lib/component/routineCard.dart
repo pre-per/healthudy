@@ -6,15 +6,17 @@ import 'package:provider/provider.dart';
 
 class RoutineCard extends StatelessWidget {
   final String routineName;
+  final int index;
 
   const RoutineCard({
     required this.routineName,
+    required this.index,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final iconColorProvider = Provider.of<IconColorProvider>(context);
+    final cardProvider = Provider.of<CardProvider>(context);
 
     return Padding(
       padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
@@ -38,32 +40,31 @@ class RoutineCard extends StatelessWidget {
                       IconButton(
                         onPressed: () {
                           print("routine");
-                          iconColorProvider.changeColor();
+                          cardProvider.checkCard(index.toString(), '2024-11-13');
                         },
                         icon: Icon(
                           Icons.check,
-                          color: iconColorProvider.iconColor,
+                          color: cardProvider.cards[index].isChecked
+                              ? PRIMARY_COLOR
+                              : Colors.grey,
                         ),
                       ),
                       Center(
-                        child: iconColorProvider.isChecked
-                            ? Text(
-                                '완료!',
-                                style: TextStyle(
-                                color: PRIMARY_COLOR,
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w700,
-                              )
-                              )
-                            : const SizedBox()
-                      ),
+                          child: cardProvider.cards[index].isChecked
+                              ? Text('완료!',
+                                  style: TextStyle(
+                                    color: PRIMARY_COLOR,
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w700,
+                                  ))
+                              : const SizedBox()),
                     ],
                   ),
                   const SizedBox(width: 10.0),
-                  const Expanded(
+                  Expanded(
                     child: Center(
                       child: Text(
-                        "Hello World!",
+                        routineName,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 16.0,

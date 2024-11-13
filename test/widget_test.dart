@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:healthudy/main.dart';
-import 'package:healthudy/screen/homescreen.dart';
+import 'package:healthudy/screen/main_screen/homescreen.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

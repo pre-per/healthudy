@@ -3,7 +3,7 @@ import 'package:healthudy/component/cardList.dart';
 import 'package:healthudy/component/addRoutineButton.dart';
 import 'package:healthudy/const/colors.dart';
 import 'package:healthudy/provider/cardProvider.dart';
-import 'package:healthudy/screen/generate_routine_screen.dart';
+import 'package:healthudy/screen/sub_screen/generate_routine_screen.dart';
 import 'package:provider/provider.dart';
 
 class RoutineScreen extends StatelessWidget {
@@ -41,7 +41,7 @@ class RoutineScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            !cardProvider.isEmpty // 잠시 이렇게 해둠 나중에 느낌표 지우기
+            cardProvider.cards.isEmpty // 잠시 이렇게 해둠 나중에 느낌표 지우기
                 ? Addroutinebutton()
                 : CardListWidget(scrollable: true)
           ],

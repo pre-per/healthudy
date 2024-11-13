@@ -18,9 +18,9 @@ class CardListWidget extends StatelessWidget {
         physics: scrollable
             ? const AlwaysScrollableScrollPhysics()
             : const NeverScrollableScrollPhysics(),
-        itemCount: Provider.of<CardProvider>(context).cardNum,
+        itemCount: Provider.of<CardProvider>(context).cards.length,
         itemBuilder: (context, index) {
-          return RoutineCard(routineName: 'Hello World');
+          return RoutineCard(routineName: 'Card #$index', index: index);
         },
       ),
     );

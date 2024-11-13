@@ -11,7 +11,6 @@ class CheckScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final attendanceProvider = Provider.of<AttendanceProvider>(context);
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -39,7 +38,7 @@ class CheckScreen extends StatelessWidget {
           child: Column(
             children: [
               MapWidget(),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 30.0),
               GestureDetector(
                 onTap: () async {
                   if (attendanceProvider.isTodayAttendance) {

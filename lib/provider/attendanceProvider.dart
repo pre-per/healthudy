@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 class AttendanceProvider with ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
   Map<String, bool> _attendanceData = {};
 
   Map<String, bool> get attendanceData => _attendanceData;
@@ -16,7 +15,7 @@ class AttendanceProvider with ChangeNotifier {
   Future<void> checkAttendance() async {
     String todayDate = getTodayDate();
     try {
-      await _firestore.collection(todayDate).doc('attendance').set({
+      await _firestore.collection('User1').doc(getTodayDate()).set({
         'isPresent': true,
       });
       _attendanceData[todayDate] = true;
@@ -27,7 +26,7 @@ class AttendanceProvider with ChangeNotifier {
   }
 
   Future<void> fetchAllAttendance() async {
-    try {
+    /* try {
       QuerySnapshot allCollections =
           await _firestore.collectionGroup('attendance').get();
       Map<String, bool> tempData = {};
@@ -42,11 +41,11 @@ class AttendanceProvider with ChangeNotifier {
     } catch (e) {
       print("Error: $e");
     }
+     */
   }
 
   bool get isTodayAttendance {
     String todayDate = getTodayDate();
-    fetchAllAttendance();
     return _attendanceData[todayDate] ?? false;
   }
 }
