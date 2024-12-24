@@ -1,13 +1,21 @@
 class CardModel {
-  String cardName;
-  String title;
-  String dateTime;
+  String date;
+  bool back;
+  bool shoulder;
+  bool chest;
+  bool leg;
+  bool abdominal;
+  bool cardio;
   bool isChecked;
 
   CardModel({
-    required this.cardName,
-    required this.title,
-    required this.dateTime,
+    required this.date,
+    this.back = false,
+    this.shoulder = false,
+    this.chest = false,
+    this.leg = false,
+    this.abdominal = false,
+    this.cardio = false,
     this.isChecked = false,
   });
 }

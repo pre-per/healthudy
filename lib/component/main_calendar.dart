@@ -13,7 +13,6 @@ class CalendarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dateProvider = Provider.of<SelectedDateProvider>(context);
-    final attendanceProvider = Provider.of<AttendanceProvider>(context);
 
     return DecoratedBox(
       decoration: BoxDecoration(

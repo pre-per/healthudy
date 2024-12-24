@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthudy/component/main_calendar.dart';
 import 'package:healthudy/const/colors.dart';
 import 'package:healthudy/provider/cardProvider.dart';
 import 'package:provider/provider.dart';
@@ -57,7 +58,9 @@ class GenerateRoutineScreen extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                cardProvider.dateSelect();
+                showDialog(context: context, builder: (_) {
+                  return CalendarWidget();
+                });
               },
             ),
             const SizedBox(height: 30.0),

@@ -40,7 +40,6 @@ class RoutineCard extends StatelessWidget {
                       IconButton(
                         onPressed: () {
                           print("routine");
-                          cardProvider.checkCard(index.toString(), '2024-11-13');
                         },
                         icon: Icon(
                           Icons.check,
